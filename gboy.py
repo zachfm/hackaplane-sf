@@ -86,14 +86,14 @@ def sine(frequency, length, rate):
 
 def play_tone(frequency=440, length=1, rate=44100):
     chunks = []
-    chunks.append(triangle(frequency, length, rate)*numpy.concatenate([numpy.linspace(0,1,100), numpy.linspace(1,1,length*rate-200), numpy.linspace(1,0,100)]))
+    chunks.append(triangle(frequency, length, rate)*numpy.concatenate([numpy.linspace(0,1,100), numpy.linspace(1,1,int(length*rate-200)), numpy.linspace(1,0,100)]))
 
     chunk = numpy.concatenate(chunks) * 0.25
     stream.write(chunk.astype(numpy.float32).tostring())
 
 def play_chord(f1, f2, length=1, rate=44100):
     chunks = []
-    chunks.append(triangle_chord(f1, f2, length, rate)*numpy.concatenate([numpy.linspace(0,1,100), numpy.linspace(1,1,length*rate-200), numpy.linspace(1,0,100)]))
+    chunks.append(triangle_chord(f1, f2, length, rate)*numpy.concatenate([numpy.linspace(0,1,100), numpy.linspace(1,1,int(length*rate-200)), numpy.linspace(1,0,100)]))
 
     chunk = numpy.concatenate(chunks) * 0.25
     stream.write(chunk.astype(numpy.float32).tostring())
@@ -240,15 +240,15 @@ if __name__ == "__main__":
     #dragnet
     play_note(1, 2, 75, 0.1)
     play_note(2, 2, 15, 0.1)
-    play_note(3, 2, 30, 0.1)
+    play_note(2.5, 2, 30, 0.1)
     play_note(1, 2, 60, 0.1)
     play_note(1, 2, 60, 0.1)
     play_note(1, 2, 75, 0.1)
     play_note(2, 2, 15, 0.1)
-    play_note(3, 2, 30, 0.1)
+    play_note(2.5, 2, 30, 0.1)
     play_note(1, 2, 30, 0.1)
     play_note(1, 2, 7, 0.1)
-    play_note(5, 2, 83, 0.1)
+    play_note(4.5, 2, 83, 0.1)
     play_note(1, 2, 30, 0.1)
     play_note(0, 0, 6, 0.1)
 
